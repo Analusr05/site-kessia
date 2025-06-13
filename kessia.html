@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aninha e Kessinha</title>
+
+  <!-- Fonte romântica do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;
+      background-color: #f8e6ff;
+      color: #4b0082;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #a855f7;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Container do carousel ajustado para centralizar imagem */
+    .carousel-container {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      margin: 2rem 0;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Estilo das setas */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(107, 33, 168, 0.8);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+      transition: background-color 0.3s;
+      z-index: 10;
+    }
+    .arrow:hover {
+      background-color: #7e22ce;
+    }
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
+
+    .description {
+      max-width: 700px;
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 1.5rem;
+      color: #6b21a8;
+      padding: 0 1rem;
+    }
+
+    .counter {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #7e22ce;
+      margin-bottom: 2rem;
+      text-align: center;
+      background: rgba(255,255,255,0.6);
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>Aninha e Kessinha</header>
+
+  <div class="carousel-container">
+    <button class="arrow arrow-left" id="prev">&#8592;</button>
+    <img id="carouselImage" src="https://i.imgur.com/tkMLxa4.jpg" alt="Foto" />
+    <button class="arrow arrow-right" id="next">&#8594;</button>
+  </div>
+
+  <div class="description">
+    Oiê, então amor, tu sabe que eu sou péssima nisso, mas eu sou muito romântica, eu tenho essa ansiedade 
+    dentro de mim, puta que pariu, eu tenho que me ajoelhar e beijar o pé dela. Então, eu vou tentar falar. 
+    Eu te amo muito, tipo, muito, muito, muito mesmo. Você é tipo, a pessoa mais gentil, e engraçada, e bonita, 
+    e legal, e maravilhosa, e perfeita, e tudo do mundo inteiro. E tipo, eu fico abismada como uma pessoa tão foda 
+    assim me quis, porque eu sou eu, né, eu sou um idiotinha. Mas enfim, eu te amo pra caralho, eu quero botar um 
+    filho dentro de você. Enfim, né, vou tentar ser fofinha de novo. Eu sei que você tem dificuldades de se 
+    ver assim, mas eu quero que você saiba que você é tudo isso que eu já falei, e muito mais. E você é a pessoa 
+    mais perfeita e maravilhosa que já foi criada na face da Terra. E eu vou me esforçar muito pra que você nunca 
+    duvide disso, e pra que você nunca duvide do tanto que eu te amo, porque é descomunal o tanto que eu te amo, 
+    sério.Você faz eu me sentir a menina mais especial do universo. Eu fico com o coração todo quentinho e toda bestinha 
+    só de estar perto de tu, na tua presença. Tu não precisa nem me tocar, só de tu olhar pra mim, eu já me sinto a menina 
+    mais feliz do universo. Eu te amo muito, muito, muito. Pra mim, você é tipo aqueles fitoplâncton que brilham no 
+    escuro. Porque tem fitoplâncton, acho que tu já viu as imagens, que eles brilham no escuro no mar. Daí o mar fica
+     todo colorido, fica todo brilhoso. Você é tipo isso. Porque tipo, normalmente o mar, ele é bonito e tal, mas 
+     foda-se né, é só água. Mas quando tem o phytoplankton, ele fica lindo pra caralho e maravilhoso e causa sensação
+      boa nas pessoas. O mar é a minha vida e você é o phytoplankton, iluminando tudo e deixando tudo mais bonito.
+       Eita, eu fui gay agora, viu? Amou? Te amo, gatinha. Beijinhos, espero que você tenha gostado do site.
+  </div>
+
+  <div class="counter" id="loveCounter">
+    Carregando tempo de amor...
+  </div>
+
+  <script>
+    const images = [
+      "https://i.imgur.com/tkMLxa4.jpg",
+      "https://i.imgur.com/3jXnw26.jpg",
+      "https://i.imgur.com/sq91fdE.jpg",
+      "https://i.imgur.com/kNyN5VK.jpg",
+      "https://i.imgur.com/RC4YHvk.jpg",
+      "https://i.imgur.com/LaS5WpD.jpg",
+      "https://i.imgur.com/q4iAVzH.jpg",
+      "https://i.imgur.com/XllxKN7.jpg",
+      "https://i.imgur.com/3so2kDf.jpg",
+      "https://i.imgur.com/egvktNY.jpg",
+      "https://i.imgur.com/UwVDCqg.jpg",
+      "https://i.imgur.com/HNumqss.jpg",
+      "https://i.imgur.com/cDzG09a.jpg",
+      "https://i.imgur.com/KG67Y7B.jpg",
+      "https://i.imgur.com/H8uV0ws.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    const carouselImage = document.getElementById('carouselImage');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    function showImage(index) {
+      if (index < 0) {
+        currentIndex = images.length - 1;
+      } else if (index >= images.length) {
+        currentIndex = 0;
+      } else {
+        currentIndex = index;
+      }
+      carouselImage.src = images[currentIndex];
+    }
+
+    prevBtn.addEventListener('click', () => {
+      showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      showImage(currentIndex + 1);
+    });
+
+    // Inicializa mostrando a primeira imagem
+    showImage(0);
+
+    // Seu contador de tempo juntos, sem alteração
+    function updateCounter() {
+      const startDate = new Date("2024-12-20T00:00:00");
+      const now = new Date();
+      let delta = Math.floor((now - startDate) / 1000);
+
+      const years = Math.floor(delta / (365 * 24 * 60 * 60));
+      delta %= 365 * 24 * 60 * 60;
+
+      const months = Math.floor(delta / (30 * 24 * 60 * 60));
+      delta %= 30 * 24 * 60 * 60;
+
+      const days = Math.floor(delta / (24 * 60 * 60));
+      delta %= 24 * 60 * 60;
+
+      const hours = Math.floor(delta / (60 * 60));
+      delta %= 60 * 60;
+
+      const minutes = Math.floor(delta / 60);
+      const seconds = delta % 60;
+
+      document.getElementById("loveCounter").textContent =
+        `Juntos há: ${years} ano(s), ${months} mês(es), ${days} dia(s), ${hours} hora(s), ${minutes} minuto(s) e ${seconds} segundo(s) 💜`;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+  </script>
+
+</body>
+</html>
