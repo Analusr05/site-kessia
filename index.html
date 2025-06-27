@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aninha e Kessinha</title>
 
-  <!-- Fonte romântica do Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
   <style>
@@ -125,10 +124,10 @@
     só de estar perto de tu, na tua presença. Tu não precisa nem me tocar, só de tu olhar pra mim, eu já me sinto a menina 
     mais feliz do universo. Eu te amo muito, muito, muito. Pra mim, você é tipo aqueles fitoplâncton que brilham no 
     escuro. Porque tem fitoplâncton, acho que tu já viu as imagens, que eles brilham no escuro no mar. Daí o mar fica
-     todo colorido, fica todo brilhoso. Você é tipo isso. Porque tipo, normalmente o mar, ele é bonito e tal, mas 
-     foda-se né, é só água. Mas quando tem o phytoplankton, ele fica lindo pra caralho e maravilhoso e causa sensação
-      boa nas pessoas. O mar é a minha vida e você é o fitoplâncton, iluminando tudo e deixando tudo mais bonito.
-       Eita, eu fui gay agora, viu? Amou? Te amo, gatinha. Beijinhos, espero que você tenha gostado do site.
+    todo colorido, fica todo brilhoso. Você é tipo isso. Porque tipo, normalmente o mar, ele é bonito e tal, mas 
+    foda-se né, é só água. Mas quando tem o phytoplankton, ele fica lindo pra caralho e maravilhoso e causa sensação
+    boa nas pessoas. O mar é a minha vida e você é o fitoplâncton, iluminando tudo e deixando tudo mais bonito.
+    Eita, eu fui gay agora, viu? Amou? Te amo, gatinha. Beijinhos, espero que você tenha gostado do site.
   </div>
 
   <div class="counter" id="loveCounter">
@@ -182,9 +181,10 @@
     // Inicializa mostrando a primeira imagem
     showImage(0);
 
-    // Seu contador de tempo juntos, sem alteração
+    // Seu contador de tempo juntos, com a data de início corrigida
     function updateCounter() {
-      const startDate = new Date("2024-12-20T00:00:00");
+      // Correção aqui: "2024-12-20T09:30:00" para 20 de dezembro de 2024 às 09:30
+      const startDate = new Date("2024-12-20T09:30:00"); 
       const now = new Date();
       let delta = Math.floor((now - startDate) / 1000);
 
