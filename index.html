@@ -185,34 +185,61 @@
     // Inicializa mostrando a primeira imagem
     showImage(0);
 
+    // Função para obter o número de dias em um determinado mês e ano
+    function getDaysInMonth(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+    }
+
     // Seu contador de tempo juntos, com a data de início corrigida
     function updateCounter() {
-      // Correção aqui: "2024-12-20T09:30:00" para 20 de dezembro de 2024 às 09:30
-      const startDate = new Date("2024-12-20T09:30:00"); 
+      const startDate = new Date("2024-12-20T09:20:00"); 
       const now = new Date();
-      let delta = Math.floor((now - startDate) / 1000);
 
-      const years = Math.floor(delta / (365 * 24 * 60 * 60));
-      delta %= 365 * 24 * 60 * 60;
+      // Calcula a diferença inicial em cada unidade de tempo
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+      let hours = now.getHours() - startDate.getHours();
+      let minutes = now.getMinutes() - startDate.getMinutes();
+      let seconds = now.getSeconds() - startDate.getSeconds();
 
-      const months = Math.floor(delta / (30 * 24 * 60 * 60));
-      delta %= 30 * 24 * 60 * 60;
+      // Ajusta os valores negativos, começando pelos segundos e subindo
+      if (seconds < 0) {
+        seconds += 60;
+        minutes--;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours--;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days--;
+      }
+      if (days < 0) {
+        // Se os dias forem negativos, ajusta subtraindo um mês e adicionando os dias do mês anterior
+        // Cria uma data para o último dia do mês anterior ao 'now'
+        const lastMonthDate = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += lastMonthDate.getDate(); // Adiciona o número de dias do mês anterior
+        months--;
+      }
+      if (months < 0) {
+        months += 12; // Se os meses forem negativos, adiciona 12 e subtrai um ano
+        years--;
+      }
 
-      const days = Math.floor(delta / (24 * 60 * 60));
-      delta %= 24 * 60 * 60;
+      // Garante que os valores não sejam negativos se a data atual for anterior à data de início
+      if (years < 0) {
+          years = 0; months = 0; days = 0; hours = 0; minutes = 0; seconds = 0;
+      }
 
-      const hours = Math.floor(delta / (60 * 60));
-      delta %= 60 * 60;
-
-      const minutes = Math.floor(delta / 60);
-      const seconds = delta % 60;
 
       document.getElementById("loveCounter").textContent =
         `Juntos há: ${years} ano(s), ${months} mês(es), ${days} dia(s), ${hours} hora(s), ${minutes} minuto(s) e ${seconds} segundo(s) 💜`;
     }
 
     setInterval(updateCounter, 1000);
-    updateCounter();
+    updateCounter(); // Chama a função uma vez para exibir o tempo imediatamente ao carregar a página
   </script>
 
 </body>
